@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'orders/show'
+    resources :orders, only:[:index, :show, :update]
+    get "orders/current_user_order/:id" => "orders#current_user_order"
   end
+  
   namespace :public do
     get 'orders/new'
     get 'orders/confirm'
