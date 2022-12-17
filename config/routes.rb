@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :admin do
     get 'customers/index'
     get 'customers/edit'
@@ -13,6 +14,20 @@ Rails.application.routes.draw do
     get 'customers/edit'
     get 'customers/show'
   end
+
+
+  namespace :admin do
+    get 'orders/show'
+  end
+  namespace :public do
+    get 'orders/new'
+    get 'orders/confirm'
+    get 'orders/finish'
+    get 'orders/index'
+    get 'orders/show'
+  end
+  
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -20,6 +35,7 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
