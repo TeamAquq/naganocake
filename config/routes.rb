@@ -3,21 +3,21 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
   end
-  
+
   root 'public/homes#top'
   get 'about' => 'pubric/homes#about'
-  
+
   namespace :public do
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
   end
-  
+
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
   end
 
-  
+
 
 
   namespace :admin do
@@ -46,7 +46,7 @@ Rails.application.routes.draw do
     get 'orders/index'
     get 'orders/show'
   end
-  
+
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
