@@ -10,38 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2022_12_15_043722) do
-
-  create_table "order_items", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "order_id", null: false
-    t.integer "quanity", null: false
-    t.integer "tax_price", null: false
-    t.integer "creat_status", null: false
-
-ActiveRecord::Schema.define(version: 2022_12_15_034428) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "name", null: false
     t.string "postcode", null: false
     t.string "address", null: false
-
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "fare", null: false
-    t.integer "total_price", null: false
-    t.integer "pay_method", null: false
-    t.string "name", null: false
-    t.string "postcode", null: false
-    t.string "address", null: false
-    t.integer "order_status", null: false
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -82,7 +60,29 @@ ActiveRecord::Schema.define(version: 2022_12_15_034428) do
     t.integer "price", null: false
     t.string "image", null: false
     t.boolean "sale_status", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "order_id", null: false
+    t.integer "quanity", null: false
+    t.integer "tax_price", null: false
+    t.integer "creat_status", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "fare", null: false
+    t.integer "total_price", null: false
+    t.integer "pay_method", null: false
+    t.string "name", null: false
+    t.string "postcode", null: false
+    t.string "address", null: false
+    t.integer "order_status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
