@@ -15,4 +15,5 @@ class Admin::OrderItemsController < ApplicationController
   def order_item_params
     params.require(:order_item).permit(:create_status)
   end
+  
 end
