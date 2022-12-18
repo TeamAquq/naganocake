@@ -1,2 +1,21 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12　pt-5">
+            <nav class="navbar fixed-top genre-nav navbar-expand-lg navbar-dark">
+        <ul class="navbar-nav col-7 mx-auto justify-content-between">
+          <% @genres.each do |genre| %>
+            <li>・ <%= link_to genre.name, "##{genre.name}" %></li>
+          <% end %>
+        </ul>
+      </nav>
+
+      <% @genres.each do |genre| %>
+        <h4 class="genre-name" id="<%= genre.name %>">
+          <i class="fas fa-gift"></i>
+          <%= genre.name %><span class= "small">（全<%= genre.items.count %>件）</span>
+        </h4>
+        <%= render 'items_index', items: genre.items %>
+      <% end %>
+        </div>
+    </div>
+</div>

@@ -19,8 +19,8 @@
          <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --") %>
        </div>
        <div>
-         <%= ｆ.label "税抜き価格" %>
-         <% f.text.field :price, :placeholder => "1000" %>円
+         <%= f.label "税抜き価格" %>
+         <%= f.text_field :price, :placeholder => "1000" %>円
        </div>
        <div>
          <%= f.label "販売ステータス" %>
@@ -34,6 +34,7 @@
        <div>
          <%= f.submit :新規登録 %>
        </div>
+      <% end %>
     </div>
   </div>
 </div>

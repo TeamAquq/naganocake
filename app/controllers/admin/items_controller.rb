@@ -1,11 +1,12 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @items = Item.all
   end
 
   def new
-    @items = Item.new
-    @genre = Genre.all
+    @item = Item.new
+    @genres = Genre.all
   end
 
   def show
@@ -18,17 +19,26 @@ class Admin::ItemsController < ApplicationController
   end
   
   def create
-   @items = Item.new(item_params)
-   @genre = Genre.all
-   @item.save
-   redirect_to admin_item_path(@item.id)
+   @item = Item.new(item_params)
+   @genres = Genre.all
+    if @product.save
+      flash[:notice] = "You have created product successfully"
+      redirect_to admin_product_path(@product.id)
+    else
+      render :new
+    end
   end
   
   def update
-   @items = Item.find(params[:id])
-   @genre = Genre.all
+   @item = Item.find(params[:id])
+   @genres = Genre.all
    @item.update(item_params)
-   redirect_to admin_item_path(@item.id)
+   if @product.update(product_params)
+    flash[:notice] = "You have updated product successfully."
+    redirect_to admin_product_path(@product)
+   else
+    render :edit
+   end
   end
   
   private
