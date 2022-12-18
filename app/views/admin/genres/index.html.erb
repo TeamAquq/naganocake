@@ -1,10 +1,14 @@
-<div>
-    <div>
-        <div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
             <h4>ジャンル一覧・追加</h4>
         </div>
         <div>
-         ジャンル新規登録フォーム
+         <%= form_with model: @genre, url: admin_genre_path, do |f| %>
+          <div><%= f.label :name, "ジャンル名" %></div>
+          <div><%= f.text_field :name, placeholder: "ジャンル" %></div>
+          <div><%= f.submit "新規登録" %></div>
+         <% end %>
         </div>
         <div> 
          <table>
