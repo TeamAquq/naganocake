@@ -1,6 +1,6 @@
 class Order < ApplicationRecorhas
   belongs_to :customer
-  has_many :order_items, dependent: :destroy
+  has_many :order_item, dependent: :destroy
   
   validates :customer_id, presence: true
   validates :postcode, presence: true

@@ -8,12 +8,12 @@ class Admin::OrdersController < ApplicationController
   def current_user_order
     @orders = Order.where(customer_id: params[:id])
   end
-
+  
   def show　#注文履歴詳細
     @order = Order.find(params[:id])
     @order_items = @order.order_items
   end
-
+  
   def update #注文ステータス更新
     @order = Order.find(params[:id])
     @order.update(order_params)
