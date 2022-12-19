@@ -8,7 +8,7 @@ class Public::AddressesController < ApplicationController
     @address = Address.find(params[:id])
   end
   
-   def create
+  def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     if @address.save
@@ -39,7 +39,7 @@ class Public::AddressesController < ApplicationController
   private
 
   def address_params
-    params.require(:address).permit(:pocode, :address, :name)
+    params.require(:address).permit(:postcode, :address, :name)
   end
 
 end

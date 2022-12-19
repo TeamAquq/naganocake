@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    resources :customers
     get 'customers/index'
     get 'customers/edit'
     get 'customers/show'
   end
   namespace :public do
+    resources :addresses
     get 'addresses/index'
     get 'addresses/edit'
   end
