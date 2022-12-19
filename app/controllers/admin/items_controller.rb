@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def new
@@ -14,33 +14,32 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
-    @item =Item.find(params[:id])
-    @genre = Genre.all
+    @item = Item.find(params[:id])
+    @genres = Genre.all
   end
-  
+
   def create
    @item = Item.new(item_params)
    @genres = Genre.all
-    if @product.save
-      flash[:notice] = "You have created product successfully"
-      redirect_to admin_product_path(@product.id)
+
+    if @item.save
+      redirect_to admin_item_path(@item)
     else
       render :new
     end
   end
-  
+
   def update
    @item = Item.find(params[:id])
    @genres = Genre.all
    @item.update(item_params)
-   if @product.update(product_params)
-    flash[:notice] = "You have updated product successfully."
-    redirect_to admin_product_path(@product)
+   if @item.update(item_params)
+    redirect_to admin_item_path(@item)
    else
     render :edit
    end
   end
-  
+
   private
   def item_params
    params.require(:item).permit(:name, :body, :genre_id, :price, :image, :sale_status)
