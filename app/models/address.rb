@@ -6,8 +6,5 @@ class Address < ApplicationRecord
   validates :address, presence: true
   validates :name, presence: true
 
-  def address_select
-    [postcode, address, name].join(' ')
-  end
   
 end

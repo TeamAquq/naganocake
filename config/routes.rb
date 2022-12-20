@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   namespace :public do
     get 'customers/confirm'
     get 'customers/edit'
-    get 'customers/show'
+   
+    get 'my_page', to: 'customers#show'
   end
 
 
