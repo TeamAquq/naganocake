@@ -9,4 +9,7 @@ class Item < ApplicationRecord
 	validates :body, length: { maximum: 200 }, presence: true
 	validates :price, numericality: { only_integer: true }
 
+def add_tax_price
+  (self.price * 1.10).round
+end
 end

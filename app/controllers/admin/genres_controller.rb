@@ -8,7 +8,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
-    @genre = Genre.find(genre_params)
+    @genre = Genre.find(params[:id])
   end
   
   def create
