@@ -11,8 +11,10 @@
     </button>
   </div>
     <% if customer_signed_in? %>
+
    <div>
      <ul>
+
        <li>ようこそ、<%#= last_name(current_customer) %>さん！</li>
        <li><%= link_to "マイページ", customers_path, class: "btn fas fa-child" %></li>
        <li><%= link_to "商品一覧", items_path, class: "btn fas fa-cheese" %></li>

@@ -25,6 +25,10 @@ class Public::CustomersController < ApplicationController
     reset_session
     redirect_to root_path, alert: "退会しました"
   end
+  
+  def
+    confirm
+  end
 
   private
 
