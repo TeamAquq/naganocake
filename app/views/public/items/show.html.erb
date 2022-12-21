@@ -1,22 +1,32 @@
 <div class="container">
     <div class= "row">
-        <div class= "col-9">
+        <div class= "col-md-6 col-md-offset-1 d-flex justify-content-center">
             <%= image_tag @item.image, size: "400×300" %>
             <% if @item.sale_status == false %>
             <span>Sold out</span><% end %>
         </div>
         
-        <div class= "col-md-9">
+        <div class= "col-md-6 mx-auto">
             <h2><%= @item.name %></h2>
-        </div>
+        
         <div class="item-body">
             <%= @item.body %>
         </div>
         <div class="item-price">
-            <%= @item_price %>
+            <%= @item.add_tax_price.to_s(:dalimited) %>(税込)
         </div>
         
         <% if customer_signed_in? %>
-        <%= form_with
+    　　　<%= form_with( model: [@item, @cart_item], url: cart_items_path, method: :post, local:true) do |f| %>
+  　　　     <%= f.hidden_field item_id, value: @item.id %>
+  　　　     <% if @item.sale_status == true %>
+  　　　       <span  class="d-flex justify-content-start"><%= f.select :quantity, options_for_select(1..10), include_blank: "個数選択" %><span>
+  　　　       <%= f.submit "カートに入れる", class:"btn btn-outline-success" %>
+  　　　     <% else %>
+            <p class="text-muted">こちらの商品は、只今売り切れです。</p>
+          <% end %>
+    　　　<% end %>
+　　  <% end %>
+        </div>
     </div>
 </div>
