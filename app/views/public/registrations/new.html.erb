@@ -47,19 +47,18 @@
   
   
   <div class="field">
-    <%= f.label :last_name_kana, "フリガナ" %>
+    <%= f.label :last_kana_name, "フリガナ" %>
     (セイ)
-    <%= f.text_field :last_name_kana, autofocus: true, placeholder: "レイワ" %>
+    <%= f.text_field :last_kana_name, autofocus: true, placeholder: "レイワ" %>
     (メイ)
-    <%= f.text_field :first_name_kana, autofocus: true, placeholder: "ミチコ" %>
+    <%= f.text_field :first_kana_name, autofocus: true, placeholder: "ミチコ" %>
   </div>
   
-  <div class="field">
-  </div>
+  
 
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<%#= render "public/shared/links" %>
