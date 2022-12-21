@@ -1,5 +1,5 @@
-<header class="fixed-top headber">
-  <nav class="navbar navbar-expand-lg navbar-light pt-3">
+<header class="headber">
+  <div>
     <% if admin_signed_in? %>
      <%= link_to "Nagano Cake", admin_orders_path %>
     <% else %>
@@ -38,5 +38,5 @@
        <li><%= link_to "ログイン", new_customer_session_path, class: "btn fas fa-sign-in-alt" %></li>
      </ul>
   <% end %>
-   </nav>
+   </div>
 </header>
