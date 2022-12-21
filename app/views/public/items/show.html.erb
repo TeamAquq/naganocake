@@ -1,0 +1,22 @@
+<div class="container">
+    <div class= "row">
+        <div class= "col-9">
+            <%= image_tag @item.image, size: "400×300" %>
+            <% if @item.sale_status == false %>
+            <span>Sold out</span><% end %>
+        </div>
+        
+        <div class= "col-md-9">
+            <h2><%= @item.name %></h2>
+        </div>
+        <div class="item-body">
+            <%= @item.body %>
+        </div>
+        <div class="item-price">
+            <%= @item_price %>
+        </div>
+        
+        <% if customer_signed_in? %>
+        <%= form_with
+    </div>
+</div>

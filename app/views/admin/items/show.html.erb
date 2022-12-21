@@ -1,0 +1,37 @@
+<div class= "container">
+  <div class= "row">
+    <div>
+      <h2>商品詳細</h2>
+      <%= image_tag @item.image, size: "300x400" %>
+    </div>
+    <div>
+      <div class="item-name">
+        商品名
+        <%= @item.name %>
+      </div>
+      <div class="item-body">
+        商品説明
+        <%= @item.body %>
+      </div>
+      <div class="item-genres">
+        ジャンル
+        <%= @item.genre.name %>
+      </div>
+      <div class="item-name">
+        商品名
+        <%= @item.name %>
+      </div>
+      <div class="sale-status">
+        販売ステータス
+        <% if @item.sale_status == true %>
+        <span>販売中</span>
+        <% elsif @item.sale_status == false %>
+        <span>販売停止中</span>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <% link_to "編集する", edit_admin_item_path(@item) %>
+    </div>
+  </div>
+</div>

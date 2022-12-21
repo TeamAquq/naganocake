@@ -1,35 +1,36 @@
 Rails.application.routes.draw do
 
+
+  root 'public/homes#top'
+  get 'about' => 'public/homes#about'
+
+  scope module: :public do
+    resources :items, only: [:index, :show]
+    resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post 'confirm'
+        get  'complete'
+      end
+    end
+    resource  :customers, only: [:show, :edit, :update] do
+      collection do
+        get 'quit'
+        patch 'out'
+      end
+    end
+  end
+
   namespace :admin do
-    resources :customers
-    get 'customers/index'
-    get 'customers/edit'
-    get 'customers/show'
-  end
-  namespace :public do
-    resources :addresses
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
-  namespace :public do
-    get 'customers/confirm'
-    get 'customers/edit'
-   
-    get 'my_page', to: 'customers#show'
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
   end
 
 
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/finish'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  
+
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
@@ -40,5 +41,6 @@ Rails.application.routes.draw do
 }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
 
