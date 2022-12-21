@@ -20,9 +20,14 @@ Rails.application.routes.draw do
         post 'confirm'
         get  'complete'
       end
-    end
-    resource  :customers, only: [:show, :edit, :update] do
-      collection do
+  end
+    resource  :customers, only: [ :show, :edit, :update] do
+      
+      get 'confirm'
+      patch 'withdrawal'
+      
+      
+       collection do
         get 'quit'
         patch 'out'
       end

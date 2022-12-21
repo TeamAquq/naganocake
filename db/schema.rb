@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2022_12_16_095413) do
+ActiveRecord::Schema.define(version: 2022_12_21_072157) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,7 +39,6 @@ ActiveRecord::Schema.define(version: 2022_12_16_095413) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
-
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id", null: false
@@ -87,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_12_16_095413) do
     t.boolean "customer_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -102,6 +101,7 @@ ActiveRecord::Schema.define(version: 2022_12_16_095413) do
     t.string "name", null: false
     t.text "body", null: false
     t.integer "price", null: false
+    t.string "image", null: false
     t.boolean "sale_status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
