@@ -2,7 +2,7 @@ class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @customers = Customer.paginate(page: params[:page])
+    @customers = Customer.paginate(page: params[:page], per_page: 10)
   end
 
   def show
