@@ -1,34 +1,33 @@
 <div class= "container pt-5">
   <div class= "row">
-    <div class="col-sm-5">
+    <div class="col-5">
       <h3 class="bg-light">商品詳細</h3>
       <div class="item-image", style="margin-top: 60px">
       <%= image_tag @item.image, size: "400x300" %></div>
     </div>
-    <div class="col-sm-7" style="margin-top: 90px;">
-      <div class="item-name">
-        <label class="col-sm-4">商品名</label>
+    <div class="col-7" style="margin-top: 90px;">
+      <div>
+        <label class="col-4">商品名</label>
         <%= @item.name %>
       </div>
-      <div class="item-body">
-        <label class="col-sm-4">商品説明</label>
+      <div>
+        <label class="col-4">商品説明</label>
         <%= @item.body %>
       </div>
-      <div class="item-genres">
-        <label class="col-sm-4">ジャンル</label>
+      <div>
+        <label class="col-4">ジャンル</label>
         <%= @item.genre.name %>
       </div>
-      <div class="item-price">
-        <label class="col-sm-4 h7">
+      <div>
+        <label class="col-4 h7">
           税込価格</br>(税抜価格)
         </label>
         <span><%= @item.add_tax_price.to_s(:dalimited) %></span>
         <span>(<%= @item.price %>) 円</span>
-        
       </div>
       
-      <div class="sale-status">
-        <label class="col-sm-4">販売ステータス</label>
+      <div>
+        <label class="col-4">販売ステータス</label>
         <% if @item.sale_status == true %>
         <span class="text-success">販売中</span>
         <% elsif @item.sale_status == false %>

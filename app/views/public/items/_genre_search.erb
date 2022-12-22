@@ -1,0 +1,16 @@
+<div class="col-md-2">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ジャンル検索</th>
+      </tr>
+    </thead>
+    <% Genre.all.each do |genre| %>
+    <tbody>
+     <tr>
+       <td><%= genre.name %></td>
+     </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>

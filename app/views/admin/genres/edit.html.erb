@@ -9,7 +9,7 @@
          <%= form_with model: @genre, url: admin_genre_path, class: "d-flex align-items-center" do |f| %>
           <div class="pl-3"><%= f.label :name, "ジャンル名", class: "small" %></div>
           <div class="pl-3"><%= f.text_field :name, placeholder: "ジャンル名" %></div>
-          <div class="ml-5"><%= f.submit "変更を保存", class: "form-control btn btn-success ml-5" %></div>
+          <div class="ml-5"><%= f.submit "変更を保存", class: "btn btn-success ml-5" %></div>
          <% end %>
         </div>
 </div>
