@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container pt-5">
   <div class="row">
     <div class="col-6 mx-auto">
-      <h2>新商品登録</h2></br>
+      <h3 class="bg-light">商品編集</h3></br>
       <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
       <%#= render 'layouts/errors', model: f.object %>
        <div class="form-group" style="display:inline-flex">
@@ -30,8 +30,8 @@
          <label style="margin-left: 30px;"><%= f.radio_button :sale_status, "false", checked: false %>販売停止中</label>
        </div>
        
-       <div>
-         <%= f.submit :変更を保存, class:'btn btn-lg btn-outline-success' %>
+       <div class="text-center">
+         <%= f.submit :変更を保存, class:'btn btn-lg btn-success' %>
        </div>
       <% end %>
     </div>
