@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
   namespace :admin do
     resources :orders, only:[:index, :show, :update]
     get "orders/current_user_order/:id" => "orders#current_user_order"
@@ -35,11 +34,6 @@ Rails.application.routes.draw do
     get 'customers/show'
   end
 
-
-  namespace :admin do
-    get 'orders/show'
-    get 'orders/index'
-  end
   
   namespace :public do
     get 'orders/new'
@@ -49,9 +43,6 @@ Rails.application.routes.draw do
     get 'orders/show'
   end
 
-
-=======
->>>>>>> origin/develop2
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
