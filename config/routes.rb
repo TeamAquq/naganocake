@@ -19,9 +19,6 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
   end
 
-
-
-
   namespace :admin do
     get 'customers/index'
     get 'customers/edit'
