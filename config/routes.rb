@@ -31,7 +31,8 @@ Rails.application.routes.draw do
       end
   end
     resource  :customers, only: [ :show, :edit, :update] do
-
+      
+      
       get 'confirm'
       patch 'withdrawal'
 

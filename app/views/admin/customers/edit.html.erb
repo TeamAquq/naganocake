@@ -1,29 +1,36 @@
-<h2><%= @customer.last_name + @customer.first_name %>産の会員情報編集</h2>
-  <%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
-    <div>
-        <%= f.label :id, "会員ID" %>
-        <div>
-        <%= f.label :id, @customer.id %>
-        </div>
+<div class="container">
+  <div class="row mb-5">
+    <div class="offset-1">
+      <h2 class="my-4 text title-sub-text"><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h2>
+    </div>
+    
+    <div class="col-12">
+      <%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
+      
+        <div class="form-group row text">
+          <%= f.label :id, "会員ID", class: "col-form-label col-3 font-weight-bold" %>
+          <div class="col=8 light-text">
+           <%= f.label :id, @customer.id, class: "ml-4"  %>
+          </div>
         </div>
 
-        <div>
-          <%= f.label :first_name, "氏名" %>
-          <div>
-            <%= f.text_field :last_name %>
+        <div class="form-group row text">
+          <%= f.label :first_name, "氏名", class: "col-form-label col-3 font-weight-bold" %>
+          <div class="col-4 light-text">
+            <%= f.text_field :last_name, class: "form-control" %>
           </div>
-          <div>
-            <%= f.text_field :first_name %>
+          <div class="col-4 light-text">
+            <%= f.text_field :first_name, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group row text">
           <%= f.label :first_name, "フリガナ", class: "col-form-label col-3 font-weight-bold" %>
           <div class="col-4 light-text">
-            <%= f.text_field :last_name_kana, class: "form-control" %>
+            <%= f.text_field :last_kana_name, class: "form-control" %>
           </div>
           <div class="col-4 light-text">
-            <%= f.text_field :first_name_kana, class: "form-control" %>
+            <%= f.text_field :first_kana_name, class: "form-control" %>
           </div>
         </div>
 
@@ -77,3 +84,9 @@
         </div>
 
       <% end %>
+      
+      </div>
+
+  </div>
+
+</div>

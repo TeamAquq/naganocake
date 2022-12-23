@@ -1,50 +1,63 @@
- <h4>配送先登録/一覧</h4>
+ <div class="container">
+ <h3 class="my-4 text title-text">配送先登録/一覧</h4>
 
   <%= form_with model: @address, local:true do |f| %>
 
-    <div>
-      <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
-      <div>
-        <%= f.text_field :postcode, placeholder: "00000000" %>
+    <div class="form_group row mt-5 mb-3 text">
+      <%= f.label :postcode, "郵便番号(ハイフンなし)", class: "col-form-label col-3" %>
+      <div class="col-3 text">
+        <%= f.text_field :postcode, class: "form-control", placeholder: "00000000" %>
       </div>
     </div>
 
-    <div>
-      <%= f.label :address, "住所" %>
-      <div>
-        <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+    <div class="form_group row mb-3 text">
+      <%= f.label :address, "住所", class: "col-form-label col-3" %>
+      <div class="col-7 text">
+        <%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
       </div>
     </div>
 
-    <div>
-      <%= f.label :name, "宛名" %>
-      <div>
-        <%= f.text_field :name, placeholder: "令和道子" %>
+    <div class="form_group row mb-3 text">
+      <%= f.label :name, "宛名", class: "col-form-label col-3" %>
+      <div class="col-3 text">
+        <%= f.text_field :name, class: "form-control", placeholder: "令和道子" %>
       </div>
-      <div>
-        <%= f.submit "新規登録" %>
+      <div class="col-2 offset-2 text-right text">
+        <%= f.submit "新規登録", class: "btn btn-success btn-block" %>
       </div>
     </div>
 
   <% end %>
+  
+  <div class="row my-5">
+    <div class="col-10">
+      <table class="table table-bordered table-hover">
 
-  <thead>
-    <tr>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <th>宛名</th>
-    </tr>
-  </thead>
-
-
+        <thead class="table-active text text-size">
+          <tr>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          </tr>
+        </thead>
+        
+        <tbody> 
           <% @addresses.each do |address| %>
             <tr class="text">
               <td><%= address.postcode %></td>
               <td><%= address.address %></td>
               <td><%= address.name %></td>
               <td>
-                <%= link_to "Edit", edit_address_path(address.id) %>
-                <%= link_to "Delete", address_path(address.id), method: :delete %>
+                <%= link_to "Edit", edit_address_path(address.id), class: "btn btn-success col-5" %>
+                <%= link_to "Delete", address_path(address.id), method: :delete, class: "btn btn-danger col-5" %>
               </td>
             </tr>
-          <% end %>    
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+
+</div>
