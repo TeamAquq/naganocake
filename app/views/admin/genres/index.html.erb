@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-5">
     <div class="row">
         <div class="col-12">
             <div class="d-flex mb-4">
@@ -7,6 +7,7 @@
         </div>
         <div class="col-12">
          <%= form_with model: @genre, url: admin_genres_path, class: "d-flex align-items-center" do |f| %>
+         <%= render 'layouts/errors', model: f.object %></br>
           <div class="pl-3"><%= f.label :name, "ジャンル名", class: "small" %></div>
           <div class="pl-3"><%= f.text_field :name, placeholder: "ジャンル名" %></div>
           <div class="ml-5"><%= f.submit "新規登録", class: "form-control btn btn-success ml-5" %></div>

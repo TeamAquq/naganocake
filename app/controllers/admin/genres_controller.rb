@@ -13,8 +13,9 @@ class Admin::GenresController < ApplicationController
   
   def create
    @genre = Genre.new(genre_params)
+   @genres = Genre.all
    unless @genre.save
-      render :error
+      render :index
    end
   end
   
@@ -24,7 +25,7 @@ class Admin::GenresController < ApplicationController
     if @genre.update(genre_params)
       redirect_to admin_genres_path
     else
-      render :error
+      render :edit
     end
   end
 
