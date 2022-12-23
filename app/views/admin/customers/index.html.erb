@@ -9,24 +9,27 @@
     </thead>
 
     <tbody>
-        <% @customers.each do |customer| %>
-            <tr>
-            <td><%= customer.id %></th>
-            <td class="text">
-                    <%= link_to admin_customer_path(customer), class: "text-dark" do %>
-                      <%= customer.last_name + customer.first_name %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= customer.email %>
-                  </td>
-                  <td>
-                    <% if customer.is_deleted %>
-                      <span>退会</span>
-                    <% else %>
-                      <span class="text-success text">有効</span>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></th>
+          <td class="text">
+            <%= link_to admin_customer_path(customer), class: "text-dark" do %>
+            <%= customer.last_name + customer.first_name %>
+            <% end %>
+          </td>
+          <td>
+            <%= customer.email %>
+          </td>
+          <td>
+            <% if customer.is_deleted %>
+            <span>退会</span>
+            <% else %>
+            <span class="text-success text">有効</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <div class="mx-auto text">
+      <%= will_paginate @customers, :previous_label => '<前へ', :next_label => '次へ>', renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
