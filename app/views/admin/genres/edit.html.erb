@@ -1,14 +1,16 @@
-<div>
-    <div>
-        <div>
-            <h4>ジャンル編集</h4>
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex mb-4">
+            <h5 class="bg-light">ジャンル編集</h5>
+            </div>
         </div>
-    </div>
-    <div>
-        <%= form_with model: @genre, url: admin_genre_path do |f| %>
-         <div><%= f.label :name %></div>
-         <div><%= f.text_field :name %></div>
-         <div><%= f.submit "変更を保存" %></div>
-        <% end %>
-    </div>
+        <div class="col-12">
+         <%= form_with model: @genre, url: admin_genre_path, class: "d-flex align-items-center" do |f| %>
+         <%= render 'layouts/errors', model: f.object %></br>
+          <div class="pl-3"><%= f.label :name, "ジャンル名", class: "small" %></div>
+          <div class="pl-3"><%= f.text_field :name, placeholder: "ジャンル名" %></div>
+          <div class="ml-5"><%= f.submit "変更を保存", class: "btn btn-success ml-5" %></div>
+         <% end %>
+        </div>
 </div>
