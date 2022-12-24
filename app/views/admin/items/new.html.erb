@@ -1,39 +1,39 @@
-<div class="container">
+<div class="container pt-5">
   <div class="row">
-    <div>
-      <%= form_with model: @item, method: :post, local:true do |f| %>
-       <div>
-         <%= f.label "商品画像" %>
+    <div class="col-6 mx-auto">
+      <h3 class="bg-light">商品新規登録</h3></br>
+      <%= form_with model: @item, url: admin_items_path, method: :post, local:true do |f| %>
+      <%= render 'layouts/errors', model: f.object %>
+       <div class="form-group" style="display:inline-flex">
+         <%= f.label "商品画像", class:"col-3" %>
          <%= f.file_field :image, accept: "image/*" %>
        </div>
-       <div>
-         <%= f.label "商品名" %>
+       <div class="form-group">
+         <%= f.label "商品名", class:"col-sm-3" %>
          <%= f.text_field :name %>
        </div>
-       <div>
-         <%= f.label "商品説明" %>
+       <div class="form-group">
+         <%= f.label "商品説明", class:"col-sm-3" %>
          <%= f.text_area :body %>
        </div>
-       <div>
-         <%= f.label "ジャンル" %>
+       <div class="form-group">
+         <%= f.label "ジャンル", class:"col-sm-3" %>
          <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --") %>
        </div>
-       <div>
-         <%= ｆ.label "税抜き価格" %>
-         <% f.text.field :price, :placeholder => "1000" %>円
+       <div class="form-group">
+         <%= f.label "税抜き価格", class:"col-sm-3" %>
+         <%= f.text_field :price, :placeholder => "1000" %>円
        </div>
-       <div>
-         <%= f.label "販売ステータス" %>
-         <%= f.radio_button :sale_status, "true", checked: true %>販売中
-         <%= f.radio_button :sale_status, "false", checked: false %>販売停止中
+       <div class="form-group">
+         <%= f.label "販売ステータス", class:"col-sm-4" %>
+         <label><%= f.radio_button :sale_status, "true", checked: true %>販売中</label>
+         <label style="margin-left: 30px;"><%= f.radio_button :sale_status, "false", checked: false %>販売停止中</label>
        </div>
-       <div>
-         <%= f.label "商品説明" %>
-         <%= f.text_field :name %>
+
+       <div class="text-center">
+         <%= f.submit :新規登録, class:'btn btn-lg btn-success' %>
        </div>
-       <div>
-         <%= f.submit :新規登録 %>
-       </div>
+      <% end %>
     </div>
   </div>
 </div>

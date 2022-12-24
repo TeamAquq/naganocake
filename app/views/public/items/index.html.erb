@@ -1,2 +1,28 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="container pt-5">
+  <div class="row">
+    <%= render 'genre_search' %>
+    <div class="col-md-9 offset-md-1">
+      <div>商品一覧<span>（全<%= Item.all.count %>件）</span>
+      </div>
+      <div class= "d-flex flex-wrap justify-content-around mb-5 genre-box">
+        <% @items.each do |item| %>
+         <div>
+           <% if item.sale_status == true %>
+             <%= link_to item_path(item) do %>
+               <%= image_tag item.image, size: "200x150" %>  </br>
+            <% end %>
+           <% else %>
+             <%= link_to item_path(item) do %>
+               <%= image_tag item.image, size: "200x150" %></br>
+             <% end %>
+            <h3>Sold out</h3>
+           <% end %>
+           <p class="text-center item-name-p"><%= link_to item.name, item_path(item), class: "item-name" %></p>
+           <p class="text-right item-price-p">¥ <%= item.price.to_s(:delimited) %></p>
+         </div>
+        <% end %>
+        <%= paginate @items %>
+      </div>
+    </div>
+ </div>
+</div>
