@@ -13,7 +13,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customers_params)
       flash[:notice] = "会員情報を変更しました"
-      redirect_to my_page_customers_path
+      redirect_to customers_path
     else
       render :edit
     end
@@ -33,6 +33,6 @@ class Public::CustomersController < ApplicationController
   private
 
   def customers_params
-    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postcode, :address, :phone_number, :email)
+    params.require(:customer).permit(:first_name, :last_name, :first_kana_name, :last_kana_name, :postcode, :address, :phone_number, :email)
   end
 end
