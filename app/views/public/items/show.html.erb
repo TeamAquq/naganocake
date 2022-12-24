@@ -13,7 +13,7 @@
             <%= @item.body %>
         </div>
         <div class="item-price pt-4">
-            ￥<%= @item.add_tax_price.to_s(:dalimited) %>(税込)
+            ￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
         </div>
 
          <% if customer_signed_in? %>
