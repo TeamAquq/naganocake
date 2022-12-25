@@ -6,6 +6,10 @@ class Admin::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   
   # protected
+  def after_sign_in_path_for(resource) #追加
+    admin_orders_path
+  end
+  
   def after_sign_out_path_for(resource)
     admin_items_path
   end

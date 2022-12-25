@@ -3,22 +3,23 @@
     <div class="mt-2 offset-3 title-text text">
       注文情報入力
     </div>
-    
+    </div>
+
     <div class="row">
       <div class="mt-5 col-md-6 mx-auto">
-        <%= from_with model: @oreder, url:order_cofirm_path, method: :local: true do |f| %>
+        <%= form_with model: @order, url: confirm_orders_path, local: :true do |f| %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
-          
+
             <h4 class="text">
               支払い方法
             </h4>
               <div class="light-text">
-                <%= f.radio_button :pay_method, :クレジットカード, checked: true %>
+                <%= f.radio_button :pay_method, :credit_card %><!-- :クレジットカード　→　:credit_card　に変更-->
                 <%= f.label :pay_method, "クレジットカード" %>
-                <%= f.radio_button :pay_method, :銀行振込 %>
+                <%= f.radio_button :pay_method, :transfer %><!-- :銀行振り込み　→　:transferに変更-->
                 <%= f.label :pay_method, "銀行振込" %>
               </div>
-              
+
               <h4 class="text">
                 お届け先
               </h4>
@@ -32,15 +33,17 @@
                       <%= current_customer.last_name %><%= current_customer.first_name %>
                   </div>
                 </div>
-                <div class="form-check">
-                  <input class="form_check_input" type="radio" name="order_address" id="add_address" value="option2" >
-                    <label class="form_check_label text" for="add_address">
+
+                <div class="form-check"><!--value="option1"になってた-->
+                <input class="form_check_input" type="radio" name="order_address" id="customer_address" value="option2" checked>
+                    <label class="form_check_label text" for="customer_address">
                       登録済住所から選択
                     </label></br>
                   <div class="light-text">
-                    <%= f.collection_select :select_address, @addresses, :id, :address_select %>
+                    <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address, :postcode) %>
                   </div>
                 </div>
+
                 <div class="form-check">
                   <input class="form_check_input" type="radio" name="order_address" id="new_address" value="option3" >
                     <label class="form_check_label text" for="new_address">

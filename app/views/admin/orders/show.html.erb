@@ -58,17 +58,17 @@
           </tr>
         </thead>
         <tbody>
-          <% @order.order_items.each do |order_item| %>
+<% @order.order_items.each do |order_item| %>
           <tr class="light-text">
             <td><%= order_item.item.name %></td>
             <td><%= order_item.tax_price %></td>
-            <td><%= order_item.quantity %></td>
-            <td><%= order_item.tax_price * order_item.quantity %></td>
+            <td><%= order_item.quanity %></td>
+            <td><%= order_item.tax_price * order_item.quanity %></td>
             <td>
-              <%= form_with model: order_item, url: admin_order_item_path(order_item), local: true, method: :patch do |f| %>
-                <%= f.select :product_status, [["着手不可", "着手不可"], ["製作待ち","製作待ち"],["製作中","製作中"],["製作完了","製作完了"]], class: "form-control" %>
-              　<%= f.submit "更新", class: "btn btn-primary btn-sm" %>
-              <% end %>
+              <%#= form_with model: order_item, local: true, method: :patch do |f| %>
+                <%#= f.select :product_status, [["着手不可", "着手不可"], ["製作待ち","製作待ち"],["製作中","製作中"],["製作完了","製作完了"]], class: "form-control" %>
+              　<%#= f.submit "更新", class: "btn btn-primary btn-sm" %>
+              <%# end %>
             </td>
           </tr>
           <% end %>
@@ -81,16 +81,11 @@
           <tr>
             <td class="table-active text">商品合計</td>
             <td class="light-text">
-              <%= @order.total_money - @order.fare %>
-            </td>
-          </tr>
-          <tr>
-            <td class="table-active text">送料</td>
-            <td class="light-text"><%= @order.fare %></td>
+              <%= @order.fare %></td>
           </tr>
           <tr>
             <td class="table-active text">請求合計金額</td>
-            <td class="light-text"><%= @order.total_money %></td>
+            <td class="light-text"><%= @order.total_price %></td><!--total_moneyから変更-->
           </tr>
         </tbody>
       </table>

@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <%= render "shared/flash_message" %>
+  <%#= render "shared/flash_message" %><!--消しました-->
   <div class="row">
     <div class="offset-1 text-center">
       <h3 class="title-text text">
@@ -29,12 +29,12 @@
             <%= order.customer.last_name %>
             <%= order.customer.first_name %>
           </td>
-          <td><%= order.order_items.sum(:quantity) %></td>
+          <td><%= order.order_items.sum(:quanity) %></td>
           <td><%= order.order_status %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
-    <div class="pagination"><%= paginate @orders, theme: 'twitter-bootstrap-4' %></div>
+    <div class="pagination"><%#= paginate @orders, theme: 'twitter-bootstrap-4' %></div>
   </div>
 </div>

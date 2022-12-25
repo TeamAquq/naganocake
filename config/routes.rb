@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
- 
+
 
 
   root 'public/homes#top'
@@ -25,11 +25,11 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
         post 'confirm'
-        get  'complete'
+        get  'finish'
       end
   end
     resource  :customers, only: [ :show, :edit, :update] do
-      
+
       get 'confirm'
       patch 'withdrawal'
 
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
    devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'

@@ -48,7 +48,7 @@
             <tr>
               <td class="table-active text">商品合計</td>
               <td class="light-text">
-                <%= @order.total_money - @order.fare %>
+                <%= (@order.total_price - 800).to_s(:delimited) %><!--修正してます-->
               </td>
             </tr>
             <tr>
@@ -57,7 +57,7 @@
             </tr>
             <tr>
               <td class="table-active text">ご請求額</td>
-              <td class="light-text"><%= @order.total_money %></td>
+              <td class="light-text"><%= @order.total_price.to_s(:delimited) %></td><!--total_moneyから変更-->
             </tr>
           </tbody>
         </table>
@@ -85,10 +85,10 @@
           <tr class="light-text">
             <td><%= order_item.item.name %></td>
             <td><%= order_item.tax_price %></td>
-            <td><%= order_item.quantity %></td>
+            <td><%= order_item.quanity %></td>
             <td>
               <!-- 小計の計算 税込み単価×注文個数 -->
-              <%= order_item.tax_price * order_item.quantity %>
+              <%= (order_item.tax_price * order_item.quanity).to_s(:delimited) %>
             </td>
           </tr>
           <% end %>
