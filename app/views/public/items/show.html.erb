@@ -1,0 +1,30 @@
+<div class="container pt-5">
+  <div class= "row">
+    <%= render 'genre_search' %>  
+    <div class= "col-md-3 col-md-offset-1 d-flex justify-content-center mx-auto">
+       <%= image_tag @item.image, size: "400x300" %>
+        <% if @item.sale_status == false %>
+           <span>Sold out</span>
+        <% end %>
+    </div>
+    <div class= "col-md-4 mx-auto">
+        <h2><%= @item.name %></h2>
+        <div class="item-body">
+            <%= @item.body %>
+        </div>
+        <div class="item-price pt-4">
+            ￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
+        </div>
+
+         <% if customer_signed_in? %>
+　　       <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+            <%= f.hidden_field :item_id, :value =>@item.id %>
+            <%= f.hidden_field :customer_id, :value =>current_customer.id %>
+            <%= f.select :quantity, *[1..9], include_blank: "個数を選択" %>
+            <%= f.submit "カートに入れる", class: "btn btn-success" %>
+           <% end %>
+         <% end %>
+        </div>
+    </div>
+</div>
+

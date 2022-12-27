@@ -1,0 +1,43 @@
+<header class="headber">
+  <nav class="navar bg-light">
+    <div class="container">
+      <div class="row">
+       <div class="col-3">
+        <% if admin_signed_in? %>
+         <%= link_to admin_orders_path do %><i class="fas fa-home"></i><% end %>
+        <% else %>
+         <%= link_to root_path do %><i class="fas fa-home"></i><% end %>
+        <% end %>
+       </div>
+
+       <div class="col-3">
+        <% if customer_signed_in? %>
+       <div>ようこそ、<%= current_customer.last_name %>さん！</div>
+        <% end %>
+       </div>
+
+
+       <div class="col-6">
+        <% if customer_signed_in? %>
+         <%= link_to "マイページ", customers_path, class: "btn btn-sm btn-outline-dark" %>
+         <%= link_to "商品一覧", items_path, class: "btn btn-sm btn-outline-dark" %>
+         <%= link_to "カート", cart_items_path, class: "btn btn-sm btn-outline-dark" %>
+         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-sm btn-outline-dark" %>
+        <% elsif admin_signed_in? %>
+         <%= link_to "商品一覧", admin_items_path, class: "btn btn-sm btn-outline-dark" %>
+         <%= link_to "会員一覧", admin_customers_path, class: "btn btn-sm btn-outline-dark" %>
+         <%= link_to "注文履歴一覧", admin_orders_path, class: "btn btn-sm btn-outline-dark" %>
+         <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-sm btn-outline-dark" %>
+         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-sm btn-outline-dark" %>
+        <% else %>
+         <%= link_to "About", about_path, class: "btn btn-sm btn-outline-dark" %>
+         <%= link_to "商品一覧", items_path, class: "btn btn-sm btn-outline-dark" %>
+         <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-sm btn-outline-dark" %>
+         <%= link_to "ログイン", new_customer_session_path, class: "btn btn-sm btn-outline-dark" %>
+        <% end %>
+       </div>
+       
+      </div>
+     </div>
+   </nav>
+</header>
